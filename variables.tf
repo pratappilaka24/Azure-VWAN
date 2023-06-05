@@ -11,6 +11,14 @@ variable "region2" {
   type        = string
   description = "location 2 for the lab"
 }
+variable "region1short" {
+  type        = string
+  description = "location 1 for the lab"
+}
+variable "region2short" {
+  type        = string
+  description = "location 2 for the lab"
+}
 variable "virtual-wan-region1-hub1-prefix1" {
   type        = string
   description = "Address space for virtual-wan Location 1 Hub 1"
