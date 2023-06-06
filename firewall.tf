@@ -45,7 +45,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "region1-policy1" {
     rule {
       name                  = "network_rule_collection1_rule1"
       protocols             = ["TCP", "UDP", "ICMP"]
-      source_addresses      = [var.region1-vnet1-address-space]
+      source_addresses      = [var.region2-vnet1-address-space]
       destination_addresses = ["*"]
       destination_ports     = ["*"]
     }
@@ -70,7 +70,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "region2-policy1" {
     rule {
       name                  = "network_rule_collection1_rule1"
       protocols             = ["TCP", "UDP", "ICMP"]
-      source_addresses      = [var.region2-vnet1-address-space]
+      source_addresses      = [var.region1-vnet1-address-space]
       destination_addresses = ["*"]
       destination_ports     = ["*"]
     }
