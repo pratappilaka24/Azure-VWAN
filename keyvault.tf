@@ -11,34 +11,33 @@ resource "azurerm_key_vault" "kv1" {
   location                    = var.region1
   resource_group_name         = azurerm_resource_group.region1-rg1.name
   enabled_for_disk_encryption = true
-  #enable_rbac_authorization   = true
   tenant_id                   = data.azurerm_client_config.current.tenant_id
   soft_delete_retention_days  = 7
   purge_protection_enabled    = false
-  
+  rbac_authorization_enabled = true
 
-  sku_name = "standard"  
+  sku_name = "standard"
+
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = data.azurerm_client_config.current.object_id
+
+    key_permissions = [
+      "Get",
+    ]
+
+    secret_permissions = [
+      "Get", "Backup", "Delete", "List", "Purge", "Recover", "Restore", "Set",
+    ]
+
+    storage_permissions = [
+      "Get",
+    ]
+  }
   tags = {
     Environment = var.environment_tag
   }
 }
-
-#Create a Default Azure Key Vault access policy with Admin permissions for Terraform Service Principal
-resource "azurerm_key_vault_access_policy" "default_policy" {
-  key_vault_id = azurerm_key_vault.key-vault.id
-  tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = data.azurerm_client_config.current.object_id
-
-  lifecycle {
-    create_before_destroy = true
-  }
-
-  key_permissions         = var.kv-key-permissions-full
-  secret_permissions      = var.kv-secret-permissions-full
-  certificate_permissions = var.kv-certificate-permissions-full
-  storage_permissions     = var.kv-storage-permissions-full
-}
-
 # Create KeyVault VM password
 resource "random_password" "vmpassword" {
   length  = 20
