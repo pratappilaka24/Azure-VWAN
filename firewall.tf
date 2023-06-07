@@ -5,7 +5,7 @@ resource "azurerm_firewall" "region1-fw01" {
   name                = "${var.region1}-fw01"
   location            = var.region1
   resource_group_name = azurerm_resource_group.region1-rg1.name
-  sku_tier            = "Premium"
+  sku_tier            = "Standard"
   sku_name            = "AZFW_Hub"
   firewall_policy_id  = azurerm_firewall_policy.fw-pol01.id
   virtual_hub {
@@ -18,7 +18,7 @@ resource "azurerm_firewall" "region2-fw01" {
   name                = "${var.region2}-fw01"
   location            = var.region2
   resource_group_name = azurerm_resource_group.region2-rg1.name
-  sku_tier            = "Premium"
+  sku_tier            = "Standard"
   sku_name            = "AZFW_Hub"
   firewall_policy_id  = azurerm_firewall_policy.fw-pol02.id
   virtual_hub {
