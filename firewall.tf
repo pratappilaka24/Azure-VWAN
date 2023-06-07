@@ -1,4 +1,6 @@
 # Firewalls 
+# Commented as firewalls and policies coasting $28 per day
+/*
 resource "azurerm_firewall" "region1-fw01" {
   name                = "${var.region1}-fw01"
   location            = var.region1
@@ -76,3 +78,4 @@ resource "azurerm_firewall_policy_rule_collection_group" "region2-policy1" {
     }
   }
 }
+*/
