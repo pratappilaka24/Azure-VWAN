@@ -1,5 +1,6 @@
 # Azure Bastion
 # Public IPs
+/*
 resource "azurerm_public_ip" "region1-bastion-pip" {
   name                = "${var.region1}-bastion-pip"
   location            = var.region1
@@ -41,3 +42,4 @@ resource "azurerm_bastion_host" "region2-bastion" {
     subnet_id            = azurerm_subnet.region2-bastion-snet.id
   }
 }
+*/
