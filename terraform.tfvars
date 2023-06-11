@@ -14,5 +14,5 @@ region2-vnet1-address-space      = "10.20.8.0/21"
 region2-vnet1-snet1-range        = "10.20.11.0/24"
 region2-vnet1-bastion-snet-range = "10.20.12.0/24"
 # VMs
-vmsize        = "Standard_B4ms"
+vmsize        = "Standard_DS1_v2"
 adminusername = "labadmin"
