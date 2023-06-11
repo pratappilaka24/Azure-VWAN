@@ -51,13 +51,13 @@ resource "azurerm_network_security_group" "region1-nsg" {
   resource_group_name = azurerm_resource_group.region1-rg1.name
 
   security_rule {
-    name                       = "RDP-In"
-    priority                   = 100
+    name                       = "SSH"
+    priority                   = 1001
     direction                  = "Inbound"
     access                     = "Allow"
-    protocol                   = "*"
+    protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = "3389"
+    destination_port_range     = "22"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
@@ -71,13 +71,13 @@ resource "azurerm_network_security_group" "region2-nsg" {
   resource_group_name = azurerm_resource_group.region2-rg1.name
 
   security_rule {
-    name                       = "RDP-In"
-    priority                   = 100
+    name                       = "SSH"
+    priority                   = 1001
     direction                  = "Inbound"
     access                     = "Allow"
-    protocol                   = "*"
+    protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = "3389"
+    destination_port_range     = "22"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
