@@ -64,6 +64,7 @@ resource "azurerm_linux_virtual_machine" "region1-vm01" {
   size                = var.vmsize
   admin_username      = var.adminusername
   admin_password      = azurerm_key_vault_secret.vmpassword.value
+  disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.region1-vm01-nic.id,
   ]
@@ -92,6 +93,7 @@ resource "azurerm_linux_virtual_machine" "region2-vm01" {
   size                = var.vmsize
   admin_username      = var.adminusername
   admin_password      = azurerm_key_vault_secret.vmpassword.value
+  disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.region2-vm01-nic.id,
   ]
